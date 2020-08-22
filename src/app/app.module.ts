@@ -22,6 +22,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms'; 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -51,15 +52,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'cart', component: CartComponent },
-      { path: 'checkout', component: CheckoutComponent },
-      { path: 'order-success', component: OrderSuccessComponent },
+      { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]  },
+      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
       { path: 'login', component: LoginComponent },
-      { path: 'admin/products', component: AdminProductsComponent },
-      { path: 'admin/orders', component: AdminOrdersComponent },
-      { path: 'my/orders', component: MyOrdersComponent },
+      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService] },
+      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService] },
+      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
     ])
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6-col-md-offset-3">
+            <h1 *ngIf="authService && authService.userData | async">Hello {{ (authService.userData | async)?.email }}</h1>
+            <div *ngIf="!(authService.userData | async)">
+                <div class ="form-group">
+                    <label for ="email">Email Address:</label>
+                    <input type = 'text' class='form-control' [(ngModel)] ="email" placeholder="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type='password' class='form-control' [(ngModel)]="password" id='password' placeholder="password">
+                </div>
+                <button (click)="signUp()" class="btn btn-default">Sign Up</button>
+                <button (click)="signIn()" class="btn btn default" style="margin-left: 5px;">Login</button>
+            </div>
+            <button (click)="signOut()" class="btn btn-primary" *ngIf="authService.userData | async">Logout</button>
+        </div>
+    </div>

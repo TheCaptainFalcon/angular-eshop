@@ -17,6 +17,10 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
+import { SignupComponent } from './signup/signup.component';
+import { CommonModule } from '@angular/common';
+import { AuthService } from './services/auth.service';
+import { FormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
@@ -30,9 +34,13 @@ import { RouterModule } from '@angular/router';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    CommonModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -46,9 +54,10 @@ import { RouterModule } from '@angular/router';
       { path: 'login', component: LoginComponent },
       { path: 'admin/products', component: AdminProductsComponent },
       { path: 'admin/orders', component: AdminOrdersComponent },
+      { path: 'my/orders', component: MyOrdersComponent },
     ])
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

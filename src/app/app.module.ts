@@ -21,6 +21,7 @@ import { SignupComponent } from './signup/signup.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms'; 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { FormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductsComponent },

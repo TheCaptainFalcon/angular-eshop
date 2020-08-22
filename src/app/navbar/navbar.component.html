@@ -18,19 +18,18 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/login">Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/my/orders">My Orders</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/orders">Manage Orders</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/products">Manage Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Log Out</a>
-          </li>
-          
+
+          <div ngbDropdown class="dropdown">
+            <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown button
+            </button>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
+              <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+              <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+              <a class="dropdown-item">Log Out</a>
+            </div>
+          </div>
         </ul>
       </div>
     </div>

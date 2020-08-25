@@ -11,7 +11,7 @@ export class NavbarComponent {
   constructor(public authService: AuthService) { 
   }
 
-  signOut() {
+  SignOut() {
     this.authService.SignOut();
   }
 

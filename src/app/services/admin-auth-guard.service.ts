@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { AuthService } from './auth.service';
-import { map, switchMap } from 'rxjs/operators';
-import { UserService } from './user.service';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,13 +9,10 @@ import { Observable } from 'rxjs';
 })
 export class AdminAuthGuardService implements CanActivate {
 
-  constructor(private authService: AuthService, private userService: UserService) { }
+  constructor(private authService: AuthService) { }
 
   canActivate(): Observable<boolean> {
-    // this user represents the user obj in auth, not the app database
-    return this.authService.userData$
-      // valueChanges() needed, as mapping is unavailable over an AngularFireObject, therefore must map the Observable
-      .pipe(switchMap(user => this.userService.get(user.uid).valueChanges()))
+    return this.authService.appUserData$
       .pipe(map(appUser => appUser.isAdmin));
   }
 

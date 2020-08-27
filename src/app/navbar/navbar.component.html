@@ -20,14 +20,16 @@
                 <a class="nav-link" routerLink="/login">Login</a>
             </li>
           </ng-template>
-          <div *ngIf="authService.userData$ | async as user; else anonUser" ngbDropdown class="dropdown">
+          <div *ngIf="appUser; else anonUser" ngbDropdown class="dropdown">
             <button ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ user.email }}
+              {{ appUser.email }}
             </button>
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
-              <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
-              <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+              <ng-container *ngIf="appUser.isAdmin">
+                <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+                <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+              </ng-container>
               <a class="dropdown-item" id="logoutNav" (click)="SignOut()">Log Out</a>
             </div>
           </div>

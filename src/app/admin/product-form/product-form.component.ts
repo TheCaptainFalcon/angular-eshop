@@ -13,6 +13,7 @@ export class ProductFormComponent {
   categories$;
   // by default in 2 way binding, first inits as null, therefore obj addresses this and for adding new products
   product:any={};
+  id;
 
   constructor(
     private router: Router, 
@@ -22,15 +23,17 @@ export class ProductFormComponent {
     private productService: ProductService) { 
       this.categories$ = categoryService.getCategories().valueChanges();
 
-      let id = this.route.snapshot.paramMap.get('id');
+      this.id = this.route.snapshot.paramMap.get('id');
       // use take to quickly take one item or value from observable and automatically complete, making unsubscribe not needed bc the obs will no longer emit any values
-      if (id) this.productService.get(id).valueChanges().pipe(take(1)).subscribe(p => this.product = p)
+      if (this.id) this.productService.get(this.id).valueChanges().pipe(take(1)).subscribe(p => this.product = p)
       console.log(this.product)
       
   }
     
   save(product) {
-    this.productService.create(product);
+    if(this.id) this.productService.update(this.id, product);
+    else this.productService.create(product);
+
     this.router.navigate(['/admin/products']);
   }
 

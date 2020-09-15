@@ -21,13 +21,11 @@ export class ProductFormComponent {
     private route: ActivatedRoute,
     private categoryService: CategoryService, 
     private productService: ProductService) { 
-      this.categories$ = categoryService.getCategories().valueChanges();
+      this.categories$ = categoryService.getCategories();
 
       this.id = this.route.snapshot.paramMap.get('id');
       // use take to quickly take one item or value from observable and automatically complete, making unsubscribe not needed bc the obs will no longer emit any values
       if (this.id) this.productService.get(this.id).valueChanges().pipe(take(1)).subscribe(p => this.product = p)
-      console.log(this.product)
-      
   }
     
   save(product) {

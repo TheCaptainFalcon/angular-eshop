@@ -29,6 +29,11 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product.service';
 import { CustomFormsModule } from 'ngx-custom-validators';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +60,11 @@ import { CustomFormsModule } from 'ngx-custom-validators';
     AngularFirestoreModule,
     AngularFireAuthModule,
     NgbModule,
-    CustomFormsModule
+    CustomFormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [
     AuthService,

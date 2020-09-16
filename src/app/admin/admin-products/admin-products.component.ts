@@ -14,6 +14,8 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   products: Product[];
   filteredProd: any[];
   sub: Subscription;
+  displayedColumns: string[] = ['title', 'price', 'key'];
+
 
   constructor(private productService: ProductService) { 
     // turns out snapShotChanges can provide Unique Id, but valueChanges cannot...

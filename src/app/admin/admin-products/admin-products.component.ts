@@ -17,7 +17,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy, AfterViewInit 
   products: Product[];
   filteredProd: any[];
   sub: Subscription;
-  displayedColumns: string[] = ['title', 'category', 'price', 'key'];
+  displayedColumns: string[] = ['index', 'title', 'category', 'price', 'key'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

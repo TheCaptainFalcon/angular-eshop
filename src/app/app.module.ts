@@ -35,6 +35,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatInputModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule
   ],
   providers: [
     AuthService,

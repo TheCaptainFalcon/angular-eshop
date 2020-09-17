@@ -5,6 +5,7 @@ import { Product } from '../../models/product';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from  '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-products',
@@ -17,13 +18,14 @@ export class AdminProductsComponent implements OnInit, OnDestroy, AfterViewInit 
   products: Product[];
   filteredProd: any[];
   sub: Subscription;
-  displayedColumns: string[] = ['index', 'title', 'category', 'price', 'key'];
+  displayedColumns: string[] = ['index', 'title', 'category', 'price', 'key', 'delete'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  id;
 
 
-  constructor(private productService: ProductService) { 
+  constructor(private productService: ProductService, private router: Router) { 
     // turns out snapShotChanges can provide Unique Id, but valueChanges cannot...
     this.sub = this.productService.getAll().subscribe(products => this.dataSource.data = products)
   }
@@ -48,6 +50,16 @@ export class AdminProductsComponent implements OnInit, OnDestroy, AfterViewInit 
   }
 
   ngOnInit(): void {
+  }
+
+  // Added from product form comp. trying to see if it fits better on the data table
+  delete() {
+    if (confirm("Are you sure you want to delete this product?")) {
+      this.productService.delete(this.id);
+      this.router.navigate(['/admin/products']);
+    } else {
+      return;
+    }
   }
 
 }

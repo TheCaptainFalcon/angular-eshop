@@ -14,29 +14,40 @@
 <mat-table [dataSource]="dataSource" matSort>
     
     <ng-container matColumnDef="index">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>No.</mat-header-cell>
+        <mat-header-cell class="dataTableHeader" *matHeaderCellDef>No.</mat-header-cell>
         <mat-cell *matCellDef="let element; let i = index">{{ paginator.pageSize * paginator.pageIndex + i + 1 }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+        <mat-header-cell class="dataTableHeader" *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="category">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+        <mat-header-cell class="dataTableHeader" *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.category }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="price">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+        <mat-header-cell class="dataTableHeader" *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.price }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="key">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-header-cell class="dataTableHeader" *matHeaderCellDef>
+            <mat-icon aria-hidden="true" aria-label="edit icon">edit</mat-icon>
+        </mat-header-cell>
         <mat-cell *matCellDef="let element">
             <a [routerLink]="['/admin/products/', element.key]">Edit</a>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+        <mat-header-cell class="dataTableHeader" *matHeaderCellDef>
+            <mat-icon aria-hidden="true" aria-label="edit icon">delete</mat-icon>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <a id="deleteButton" type="button" (click)="delete()">Delete</a>
         </mat-cell>
     </ng-container>
 

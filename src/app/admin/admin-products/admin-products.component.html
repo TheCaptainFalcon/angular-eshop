@@ -30,7 +30,7 @@
 
     <ng-container matColumnDef="price">
         <mat-header-cell class="dataTableHeader" *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.price }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{ element.price | currency:"USD": true }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="key">
@@ -44,7 +44,7 @@
 
     <ng-container matColumnDef="delete">
         <mat-header-cell class="dataTableHeader" *matHeaderCellDef>
-            <mat-icon aria-hidden="true" aria-label="edit icon">delete</mat-icon>
+            <mat-icon aria-hidden="true" aria-label="delete icon">delete</mat-icon>
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
             <a id="deleteButton" type="button" (click)="delete()">Delete</a>

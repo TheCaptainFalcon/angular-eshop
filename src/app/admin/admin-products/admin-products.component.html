@@ -11,22 +11,27 @@
     >
 </mat-form-field>
 
-<mat-table [dataSource]="filteredProd">
+<mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>Title</th>
-        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.category }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef>Price</th>
-        <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.price }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="key">
-        <th mat-header-cell *matHeaderCellDef>Key</th>
-        <td mat-cell *matCellDef="let element">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
             <a [routerLink]="['/admin/products/', element.key]">Edit</a>
-        </td>
+        </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -34,7 +39,14 @@
 
 </mat-table>
 
-<table class="table">
+<mat-paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 25, 50]" 
+    showFirstLastButtons="true"
+>
+</mat-paginator>
+
+<!-- <table class="table">
     <thead>
         <tr>
             <th>Title</th>
@@ -53,4 +65,4 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->

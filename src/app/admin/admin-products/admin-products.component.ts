@@ -1,35 +1,50 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Subscription } from 'rxjs';
 import { Product } from '../../models/product';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from  '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.css']
 })
-export class AdminProductsComponent implements OnInit, OnDestroy {
+export class AdminProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   // no longer an observable due to client filtering method, as needed within an array
   // client over server due to lower amount of types/data for UX
   products: Product[];
   filteredProd: any[];
   sub: Subscription;
-  displayedColumns: string[] = ['title', 'price', 'key'];
+  displayedColumns: string[] = ['title', 'category', 'price', 'key'];
+  dataSource = new MatTableDataSource<any>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
 
   constructor(private productService: ProductService) { 
     // turns out snapShotChanges can provide Unique Id, but valueChanges cannot...
-    this.sub = this.productService.getAll().subscribe(products => this.filteredProd = this.products = products)
+    this.sub = this.productService.getAll().subscribe(products => this.dataSource.data = products)
   }
 
   filter(query: string) {
-    this.filteredProd = (query) ?
-      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
-      this.products;
+    query = query.trim();
+    query = query.toLowerCase();
+    this.dataSource.filter = query;
+
+    // this.filteredProd = (query) ?
+    //   this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
+    //   this.products;
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   ngOnInit(): void {

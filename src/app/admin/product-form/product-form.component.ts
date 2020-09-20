@@ -44,4 +44,8 @@ export class ProductFormComponent {
     }
   }
 
+  return() {
+    this.router.navigate(['/admin/products']);
+  }
+
 }

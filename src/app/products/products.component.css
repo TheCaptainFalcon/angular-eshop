@@ -2,6 +2,6 @@
     width: 15rem;
 }
 
-#cardContainer {
-    margin: 2rem auto 2rem auto;
+#gridTile {
+    border: 1px solid black;
 }

@@ -1,1 +1,13 @@
-<p>products works!</p>
+<div *ngFor="let p of products$ | async" id="cardContainer">
+    <mat-card>
+        <img mat-card-image [src]="p.imageUrl" alt="food image" id="cardImg">
+        <mat-card-content>
+            <h2>{{ p.title }}</h2>
+            <h4>{{ p.description }}</h4>
+            <p>{{ p.price | currency:"USD":true }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>Add to Cart</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

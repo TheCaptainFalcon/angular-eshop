@@ -5,3 +5,7 @@
 #gridTile {
     border: 1px solid black;
 }
+
+#listContainer {
+    display: inline-block;
+}

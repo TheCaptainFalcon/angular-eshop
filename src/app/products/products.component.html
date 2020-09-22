@@ -1,5 +1,22 @@
+
+<mat-list 
+    *ngFor="let c of categories$ | async" 
+    [value]="c.key" 
+    id="listContainer"
+    routerLink="/products"
+    [queryParams]="{ category: c.key }"
+    [class.active]="category === c.key"
+>
+    <mat-list-item>
+        <button>
+            {{ c.payload.val().name }}  
+        </button>
+    </mat-list-item>
+</mat-list>
+
+
 <mat-grid-list cols="2">
-    <ng-container *ngFor="let p of products$ | async">
+    <ng-container *ngFor="let p of filteredProd">
         <mat-grid-tile id="gridTile">
             <mat-card>
                 <img mat-card-image [src]="p.imageUrl" alt="food image" id="cardImg">

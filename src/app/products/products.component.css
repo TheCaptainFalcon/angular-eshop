@@ -6,6 +6,15 @@
     border: 1px solid black;
 }
 
-#listContainer {
-    display: inline-block;
+#filterContainer {
+    margin: 2rem auto;
+}
+
+.filterButton {
+    margin: auto 1rem;
+    text-decoration: none;
+}
+
+#resetButton {
+    border-radius: 20px;
 }

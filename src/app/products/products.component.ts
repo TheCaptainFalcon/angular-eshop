@@ -16,16 +16,19 @@ export class ProductsComponent {
   category: string;
   
   constructor(productService: ProductService, categoryService: CategoryService, private route: ActivatedRoute) { 
-    productService.getAll().subscribe(products => this.products = products)
+    productService.getAll().subscribe(products => {
+      this.products = products
+      
+      route.queryParamMap.subscribe(params => {
+        this.category = params.get("category");
+  
+        this.filteredProd = (this.category) ?
+          this.products.filter(p => p.category === this.category) :
+          this.products;
+      })
+    });
+
     this.categories$ = categoryService.getAll();
-
-    route.queryParamMap.subscribe(params => {
-      this.category = params.get("category");
-
-      this.filteredProd = (this.category) ?
-        this.products.filter(p => p.category === this.category) :
-        this.products;
-    })
   }
     
 }

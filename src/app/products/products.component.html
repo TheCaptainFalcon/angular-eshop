@@ -1,5 +1,37 @@
+<!-- <mat-list [class.active]="!category" routerLink="/products">
+    <mat-list-item [class.active]="!category" routerLink="/products">
+        <button>
+            All Categories
+        </button>
+    </mat-list-item>
+</mat-list> -->
 
-<mat-list 
+<mat-list id="filterContainer">
+
+    <button mat-button [matMenuTriggerFor]="categoryList">Categories</button>
+    <mat-menu #categoryList="matMenu">
+    <a 
+        mat-menu-item
+        type="button"
+        *ngFor="let c of categories$ | async" 
+        [value]="c.key" 
+        class="filterButton"
+        routerLink="/products"
+        [queryParams]="{ category: c.key }"
+        [class.active]="category === c.key"
+    
+    >{{ c.payload.val().name }}</a>
+
+    </mat-menu>
+
+    <button [class.active]="!category" routerLink="/products" class="filterButton" id="resetButton">
+       Reset Filters
+    </button>
+    
+</mat-list>
+
+
+<!-- <mat-list 
     *ngFor="let c of categories$ | async" 
     [value]="c.key" 
     id="listContainer"
@@ -7,12 +39,13 @@
     [queryParams]="{ category: c.key }"
     [class.active]="category === c.key"
 >
-    <mat-list-item>
+    <mat-list-item >
         <button>
             {{ c.payload.val().name }}  
         </button>
     </mat-list-item>
-</mat-list>
+    
+</mat-list> -->
 
 
 <mat-grid-list cols="2">

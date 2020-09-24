@@ -1,5 +1,6 @@
 #cardImg {
     width: 15rem;
+    height: 10rem;
 }
 
 #gridTile {
@@ -7,7 +8,6 @@
 }
 
 #filterContainer {
-    margin: 2rem auto;
 }
 
 .filterButton {

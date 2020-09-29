@@ -42,6 +42,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { ShoppingCartService } from './services/shopping-cart.service';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ShoppingCartService } from './services/shopping-cart.service';
     AdminOrdersComponent,
     SignupComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent
   ],
   imports: [
     BrowserModule,

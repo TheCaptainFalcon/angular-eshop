@@ -1,0 +1,28 @@
+<mat-list id="filterContainer ">
+
+    <button 
+        mat-button 
+        #menuTrigger="matMenuTrigger" 
+        [matMenuTriggerFor]="categoryList"
+    >
+    Categories</button>
+    <mat-menu #categoryList="matMenu">
+    <a 
+        mat-menu-item
+        type="button"
+        *ngFor="let c of categories$ | async" 
+        [value]="c.key" 
+        class="filterButton"
+        routerLink="/products"
+        [queryParams]="{ category: c.key }"
+        [class.active]="category === c.key"
+    
+    >{{ c.name }}</a>
+
+    </mat-menu>
+
+    <button [class.active]="!category" routerLink="/products" class="filterButton" id="resetButton">
+       Reset Filters
+    </button>
+    
+</mat-list>

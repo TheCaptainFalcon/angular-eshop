@@ -31,6 +31,9 @@ export class ProductsComponent {
     });
 
     this.categories$ = categoryService.getAll();
+  }
 
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
   }
 }

@@ -5,7 +5,9 @@
         <mat-card-subtitle>{{ product.description }}</mat-card-subtitle>
         <p>{{ product.price | currency:"USD":true }}</p>
     </mat-card-content>
-    <mat-card-actions>
-        <button *ngIf="showActions" mat-button (click)="addToCart(product)" >Add to Cart</button>
+    <mat-card-actions *ngIf="showActions">
+        <button mat-button (click)="addToCart(product)" >Add to Cart</button>
+        <div>{{ getQuantity() }}</div>
+
     </mat-card-actions>
 </mat-card>

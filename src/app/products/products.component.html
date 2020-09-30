@@ -4,7 +4,7 @@
 <mat-grid-list cols="2">
     <ng-container *ngFor="let p of filteredProd">
         <mat-grid-tile id="gridTile">
-            <app-product-card [product]="p"></app-product-card>
+            <app-product-card [product]="p" [shopping-cart]="cart"></app-product-card>
         </mat-grid-tile>
     </ng-container>
 </mat-grid-list>

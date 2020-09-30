@@ -30,8 +30,4 @@ export class ProductsComponent {
 
   
   }
-
-  addToCart(product: Product) {
-    this.cartService.addToCart(product);
-  }
 }

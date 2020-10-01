@@ -36,13 +36,22 @@ export class ShoppingCartService {
       return result.key;
     }
 
-  async addToCart(product: Product) {
+  async addToCart(product: Product, change: number) {
+    this.UpdateItemQuantity(product, 1)
+  };
+
+  async removeFromCart(product: Product, change: number) {
+    this.UpdateItemQuantity(product, -1);
+  };
+
+  private async UpdateItemQuantity(product: Product, change: number) {
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId, product.key)
 
     item$.snapshotChanges().pipe(take(1)).subscribe((item: any) => {
       item$.update({
-        product: product, quantity: (item.payload.val().quantity || 0 ) + 1 })
-    })
-  }
+        product: product, quantity: (item.payload.val().quantity || 0 ) + change })
+    });
+  };
+
 }

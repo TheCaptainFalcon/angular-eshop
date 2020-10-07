@@ -6,8 +6,13 @@
         <p>{{ product.price | currency:"USD":symbol }}</p>
     </mat-card-content>
     <mat-card-actions *ngIf="showActions && shoppingCart">
-        <button *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity" 
-        mat-button (click)="addToCart(product)" >Add to Cart</button>
+        <button 
+            *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity" 
+            mat-button 
+            (click)="addToCart()" 
+        >
+        Add to Cart
+        </button>
 
         <ng-template #updateQuantity>
            <app-product-quantity [product]="product" [shopping-cart]="shoppingCart"></app-product-quantity>

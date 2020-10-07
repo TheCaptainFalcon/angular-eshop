@@ -18,6 +18,8 @@ export class ProductCardComponent {
   }
 
   addToCart() {
+
+    console.log(this.product)
     this.cartService.addToCart(this.product);
   }
 

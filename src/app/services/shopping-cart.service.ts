@@ -57,19 +57,29 @@ export class ShoppingCartService {
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId, product.key)
 
-    item$.snapshotChanges().pipe(take(1)).subscribe((item: any) => {
-      let quantity = (item.payload.exportVal().quantity || 0 ) + change
-
-      if(quantity === 0) {
-        item$.remove();
-      } else {
+    item$.valueChanges().pipe(take(1)).subscribe((item:any) => {
+      if (!item) {
         item$.update({
           title: product.title,
           description: product.description,
           imageUrl: product.imageUrl,
           price: product.price,
-          quantity: quantity
-        });
-      } 
-  })}
+          quantity: 1
+        })
+      } else {
+        let quantity = item.quantity + change
+
+        if (quantity === 0) {
+        item$.remove();
+        } else {
+          item$.update({ quantity }) 
+        }
+      }
+    })
+  }
 }
+     
+
+      
+  
+

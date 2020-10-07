@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit, OnDestroy{
   appUser: AppUser;
   subscription: Subscription;
   cart$;
+  shoppingCartItemCount: number;
 
   // no longer passed into a template, therefore marked as private
   constructor(private authService: AuthService, private cartService: ShoppingCartService) { 
@@ -21,7 +22,14 @@ export class NavbarComponent implements OnInit, OnDestroy{
 
   async ngOnInit() {
     this.subscription = this.authService.appUserData$.subscribe(appUser => this.appUser = appUser);
-    this.cart$ = await this.cartService.getCart();
+    let cart$ = await this.cartService.getCart()
+    cart$.subscribe(cart => {
+      this.shoppingCartItemCount = 0;
+      for (let productId in cart.items) {
+        this.shoppingCartItemCount += cart.items[productId].quantity
+      }
+
+    })
   }
 
   ngOnDestroy() {

@@ -1,7 +1,7 @@
 <h1>Cart</h1>
 
 <ng-container *ngIf="cart$ | async as cart">
-    <p>You have {{ cart.totalItemsCount }} items in your shopping cart.</p>
+    <p>You have {{ shoppingCartItemCount }} items in your shopping cart.</p>
     <table class="table">
         <thead>
             <tr>

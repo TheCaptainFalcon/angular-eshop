@@ -6,6 +6,7 @@ export class ShoppingCart {
 
     constructor(public itemsMap: { [ productId: string ]: ShoppingCartItem }) {
         this.itemsMap = itemsMap || {};
+        if(!itemsMap) return;
 
         for (let productId in itemsMap) {
             let item = itemsMap[productId];
@@ -19,10 +20,8 @@ export class ShoppingCart {
 
     getQuantity(product: Product) {
         
-        if(!this.itemsMap) {
-            return 0;
-        }
         let item = this.itemsMap[product.key];
+        
         return item ? item.quantity : 0;
     }
 

@@ -13,7 +13,7 @@ import { ShoppingCart } from '../models/shopping-cart';
 export class NavbarComponent implements OnInit, OnDestroy{
   appUser: AppUser;
   subscription: Subscription;
-  cart$: Observable<ShoppingCart>
+  cart$;
 
   // no longer passed into a template, therefore marked as private
   constructor(private authService: AuthService, private cartService: ShoppingCartService) { 

@@ -3,7 +3,7 @@
     <mat-card-content>
         <mat-card-title>{{ product.title }}</mat-card-title>
         <mat-card-subtitle>{{ product.description }}</mat-card-subtitle>
-        <p>{{ product.price | currency:"USD":true }}</p>
+        <p>{{ product.price | currency:"USD":symbol }}</p>
     </mat-card-content>
     <mat-card-actions *ngIf="showActions && shoppingCart">
         <button *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity" 

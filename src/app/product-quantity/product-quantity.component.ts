@@ -16,11 +16,11 @@ export class ProductQuantityComponent {
   }
 
   removeFromCart() {
-    this.cartService.removeFromCart(this.product, -1);
+    this.cartService.removeFromCart(this.product);
   }
 
   addToCart() {
-    this.cartService.addToCart(this.product, 1);
+    this.cartService.addToCart(this.product);
   }
 
 }

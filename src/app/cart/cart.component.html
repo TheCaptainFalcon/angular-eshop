@@ -36,7 +36,16 @@
             </tr>
         </tfoot>
     </table>
+    <a
+        *ngIf="cart.items.length"
+        routerLink="/checkout"
+        class="btn btn-primary"
+    >
+    Check out
+    </a>
+
     <button 
+        *ngIf="cart.items.length"
         class="btn btn-danger btn-sm"
         (click)="clearCart()"
     >

@@ -1,0 +1,14 @@
+.textStyle {
+    display: flex;
+    justify-content: center;
+}
+
+#textHeader {
+    font-weight: 500;
+    margin: 2rem auto;
+}
+
+#textFooter {
+    margin: 1.5rem 1.5rem;
+    font-style: italic;
+}

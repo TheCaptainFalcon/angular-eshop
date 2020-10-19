@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 5rem auto;
+}
+
+.form-group {
+    font-weight: 500;
+}
+
+button {
+    margin: 0.5rem 1rem;
+}

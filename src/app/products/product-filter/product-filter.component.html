@@ -1,6 +1,7 @@
 <mat-list id="filterContainer ">
 
     <button 
+        class="button"
         mat-button 
         #menuTrigger="matMenuTrigger" 
         [matMenuTriggerFor]="categoryList"
@@ -21,7 +22,7 @@
 
     </mat-menu>
 
-    <button [class.active]="!category" routerLink="/products" class="filterButton" id="resetButton">
+    <button class="button" [class.active]="!category" routerLink="/products" class="filterButton" id="resetButton">
        Reset Filters
     </button>
     

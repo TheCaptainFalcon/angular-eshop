@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <form #updateProduct="ngForm" (ngSubmit)="save(updateProduct.value)">
             <div class="form-group">
-                <label for="title">Title</label>
+                <label class="headers" for="title">Title</label>
                 <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required [rangeLength]="[1,50]">
                 <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
                     <div *ngIf="title.errors.required">
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
+                <label class="headers" for="description">Description</label>
                 <textarea #description="ngModel" [(ngModel)]="product.description" name="description" id="description" type="text" class="form-control" required [rangeLength]="[1,250]"></textarea>
                 <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
                     <div *ngIf="description.errors.required">
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="price">Price</label>
+                <label class="headers" for="price">Price</label>
                 <div class="input-group">
                     <span class="input-group-addon">$</span>
                     <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="category">Category</label>
+                <label class="headers" for="category">Category</label>
                 <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
                     <option value=""></option>
                     <option *ngFor="let c of categories$ | async" [value]="c.key">{{ c.name }}</option>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="imageUrl">Image Url</label>
+                <label class="headers" for="imageUrl">Image Url</label>
                 <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
             </div>
             <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
@@ -62,14 +62,14 @@
                     A valid URL is required.
                 </div>
             </div>
-            <button type="button" (click)="return()" class="btn btn-warning">Back</button>
-            <button class="btn btn-primary">Save</button>
-            <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+            <button type="button" (click)="return()" class="btn btn-warning buttonFooter">Back</button>
+            <button class="btn btn-primary buttonFooter">Save</button>
+            <button type="button" (click)="delete()" class="btn btn-danger buttonFooter">Delete</button>
         </form>
     </div>
 
     <div class="col-md-6">
-        <h3>Product Form Preview</h3>
+        <h1 id="headerTitle">Product Form Preview</h1>
         <app-product-card [product]="product" [show-actions]="false"></app-product-card>
             
     </div>

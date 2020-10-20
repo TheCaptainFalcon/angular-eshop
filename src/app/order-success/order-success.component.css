@@ -1,0 +1,11 @@
+.textHeader {
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+}
+
+.textStyle {
+    display: flex;
+    justify-content: center;
+}

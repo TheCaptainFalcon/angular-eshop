@@ -12,10 +12,16 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { FillerComponent } from './filler/filler.component';
 
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
+},
+
+{
+  path: 'error', 
+  component: FillerComponent,
 },
 
 {

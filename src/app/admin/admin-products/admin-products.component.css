@@ -11,3 +11,7 @@
 #deleteButton:hover {
     text-decoration: underline;
 }
+
+.newProd {
+    margin: 2rem 2rem;
+}

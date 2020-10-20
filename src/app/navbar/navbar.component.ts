@@ -4,6 +4,7 @@ import { AppUser } from '../models/app-user';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { Subscription, Observable } from 'rxjs';
 import { ShoppingCart } from '../models/shopping-cart';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'navbar',
@@ -17,7 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy{
   shoppingCartItemCount: number;
 
   // no longer passed into a template, therefore marked as private
-  constructor(private authService: AuthService, private cartService: ShoppingCartService) { 
+  constructor(private authService: AuthService, private cartService: ShoppingCartService, private router: Router) { 
   }
 
   async ngOnInit() {
@@ -38,6 +39,7 @@ export class NavbarComponent implements OnInit, OnDestroy{
 
   SignOut() {
     this.authService.SignOut();
+    this.router.navigateByUrl('/');
   }
 
 }
